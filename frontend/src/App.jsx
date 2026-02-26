@@ -3,6 +3,7 @@ import { Routes, Route, NavLink } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Analytics from './pages/Analytics';
 import SathiChat from './components/SathiChat';
+import Timeline from './pages/Timeline';
 
 /* ── Sidebar Navigation ──────────────────────────────────── */
 const navItems = [

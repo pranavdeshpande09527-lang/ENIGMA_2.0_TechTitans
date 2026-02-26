@@ -28,4 +28,8 @@ export const getAnalytics = () =>
 export const sendChatMessage = (payload) =>
     API.post('/chat', payload).then((r) => r.data);
 
+/** POST /predict-pm25 */
+export const predictPM25 = (weatherData) =>
+    API.post('/predict-pm25', weatherData).then((r) => r.data);
+
 export default API;

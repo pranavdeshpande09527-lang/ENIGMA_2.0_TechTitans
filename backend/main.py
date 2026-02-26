@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from database import connect_db, disconnect_db
-from routes import aqi, risk, users, analytics, chat
+from routes import aqi, risk, users, analytics, chat, predict
 import os
 
 DEMO_MODE = os.getenv("DEMO_MODE", "true").lower() == "true"
@@ -56,6 +56,7 @@ app.include_router(risk.router)
 app.include_router(users.router)
 app.include_router(analytics.router)
 app.include_router(chat.router)
+app.include_router(predict.router)
 
 
 @app.get("/", tags=["Health"])
@@ -64,5 +65,5 @@ async def root():
         "app": "Breathometer AI",
         "status": "running",
         "docs": "/docs",
-        "endpoints": ["/aqi/{city}", "/calculate-risk", "/user/{id}", "/public-analytics"],
+        "endpoints": ["/aqi/{city}", "/calculate-risk", "/user/{id}", "/public-analytics", "/predict-pm25"],
     }

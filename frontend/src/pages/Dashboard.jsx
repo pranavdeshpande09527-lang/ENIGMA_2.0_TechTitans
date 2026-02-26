@@ -9,6 +9,7 @@ import AlertPanel from '../components/AlertPanel';
 import HealthStats from '../components/HealthStats';
 import HealthProfile from '../components/HealthProfile';
 import RiskExplanation from '../components/RiskExplanation';
+import MLPredictionCard from '../components/MLPredictionCard';
 import { getAQI, calculateRisk } from '../services/api';
 
 /* ── Mock wearable data (used when backend is unavailable) ── */
@@ -123,6 +124,9 @@ export default function Dashboard() {
 
             {/* Health Profile */}
             <HealthProfile onProfileUpdate={setProfile} />
+
+            {/* ML Prediction Card */}
+            <MLPredictionCard />
 
             {/* Top Row: AQI + Risk Gauge */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 relative">
