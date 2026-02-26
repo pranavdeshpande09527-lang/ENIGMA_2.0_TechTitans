@@ -12,6 +12,8 @@ class RiskRequest(BaseModel):
     spo2: float
     user_id: Optional[str] = None
     city: Optional[str] = None
+    # Add profile to allow backend scoring
+    profile: Optional[dict] = None
 
 
 class RiskResponse(BaseModel):

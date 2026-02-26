@@ -23,14 +23,14 @@ export default function AlertPanel({ riskData }) {
     return (
         <div className={`glass-card overflow-hidden ${borderColor}`}>
             {/* Header */}
-            <div className={`px-6 py-4 bg-gradient-to-r ${headerBg} border-b border-white/5`}>
+            <div className={`px-6 py-4 bg-gradient-to-r ${headerBg} border-b border-brand-terracotta/5`}>
                 <div className="flex items-center gap-3">
                     <span className="text-xl">{alert_flag ? '🚨' : risk_level === 'Moderate' ? '⚠️' : '✅'}</span>
                     <div>
-                        <h3 className="text-sm font-bold text-white">
+                        <h3 className="text-sm font-bold text-ink-dark">
                             {alert_flag ? 'HIGH RISK ALERT' : risk_level === 'Moderate' ? 'Moderate Risk Notice' : 'All Clear'}
                         </h3>
-                        <p className="text-[11px] text-gray-400">Real-time health advisory</p>
+                        <p className="text-[11px] text-ink-muted">Real-time health advisory</p>
                     </div>
                     {alert_flag && (
                         <span className="ml-auto w-3 h-3 bg-danger-500 rounded-full animate-pulse-glow"></span>
@@ -43,11 +43,11 @@ export default function AlertPanel({ riskData }) {
                 {preventive_suggestions.map((tip, i) => (
                     <div
                         key={i}
-                        className="flex items-start gap-3 text-sm text-gray-300 animate-slide-up"
+                        className="flex items-start gap-3 text-sm text-ink-muted animate-slide-up"
                         style={{ animationDelay: `${i * 0.1}s` }}
                     >
-                        <span className="text-primary-400 mt-0.5">›</span>
-                        <span className={alert_flag ? "font-medium text-white" : ""}>{tip}</span>
+                        <span className="text-brand-orange mt-0.5">›</span>
+                        <span className={alert_flag ? "font-medium text-ink-dark" : ""}>{tip}</span>
                     </div>
                 ))}
             </div>

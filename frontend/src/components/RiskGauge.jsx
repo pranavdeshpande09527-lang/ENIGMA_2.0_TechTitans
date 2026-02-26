@@ -4,7 +4,7 @@
 import React from 'react';
 
 const getColor = (level) => {
-    if (level === 'Safe') return { stroke: '#1aaf64', text: 'text-safe-400', label: 'text-safe-500' };
+    if (level === 'Safe') return { stroke: '#1aaf64', text: 'text-brand-teal', label: 'text-safe-500' };
     if (level === 'Moderate') return { stroke: '#f59e0b', text: 'text-warning-400', label: 'text-warning-500' };
     return { stroke: '#ff3d3d', text: 'text-danger-400', label: 'text-danger-500' };
 };
@@ -18,7 +18,7 @@ export default function RiskGauge({ score = 0, level = 'Safe' }) {
 
     return (
         <div className="glass-card-hover p-6 flex flex-col items-center">
-            <p className="text-xs text-gray-500 uppercase tracking-wider font-medium mb-4">Lung Risk Score</p>
+            <p className="text-xs text-ink-muted uppercase tracking-wider font-medium mb-4">Lung Risk Score</p>
 
             <div className="relative">
                 <svg width="200" height="120" viewBox="0 0 200 120">
@@ -49,7 +49,7 @@ export default function RiskGauge({ score = 0, level = 'Safe' }) {
                 </div>
             </div>
 
-            <span className={`mt-2 px-4 py-1 rounded-full text-sm font-semibold ${colors.label} bg-white/5 border border-white/10`}>
+            <span className={`mt-2 px-4 py-1 rounded-full text-sm font-semibold ${colors.label} bg-surface-card shadow-premium border border-brand-terracotta/10`}>
                 {level}
             </span>
         </div>

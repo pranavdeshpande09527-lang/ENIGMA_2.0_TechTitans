@@ -47,7 +47,7 @@ def _suggestions(level: str) -> list[str]:
             "Monitor your SpO2 levels periodically.",
         ],
         "High Risk": [
-            "🚨 Stay indoors and use air purifiers immediately.",
+            "[ALERT] Stay indoors and use air purifiers immediately.",
             "Avoid all outdoor physical activity.",
             "Wear an N95 mask if you must go outside.",
             "Seek medical attention if you feel breathless or dizzy.",
@@ -57,7 +57,7 @@ def _suggestions(level: str) -> list[str]:
     return data.get(level, [])
 
 
-def calculate_risk(aqi: float, heart_rate: float, spo2: float) -> dict:
+def calculate_risk(aqi: float, heart_rate: float, spo2: float, profile: dict = None) -> dict:
     """
     Calculate personalized lung risk score.
     Never crashes — returns safe defaults on bad input.
@@ -77,7 +77,18 @@ def calculate_risk(aqi: float, heart_rate: float, spo2: float) -> dict:
 
     hr_factor = _heart_rate_factor(hr_val)
     sp_factor = _spo2_factor(sp_val)
-    score = round((aqi_val * 0.5) + (hr_factor * 0.3) + (sp_factor * 0.2), 2)
+    base_score = (aqi_val * 0.5) + (hr_factor * 0.3) + (sp_factor * 0.2)
+    
+    # Apply profile vulnerabilities exactly as frontend used to
+    multiplier = 1.0
+    if profile:
+        if profile.get("smoker"): multiplier += 0.15
+        if profile.get("asthma"): multiplier += 0.25
+        if profile.get("copd"): multiplier += 0.35
+        if profile.get("outdoorHours", 0) > 4: multiplier += 0.10
+        if profile.get("age", 0) > 65: multiplier += 0.10
+        
+    score = min(round(base_score * multiplier, 1), 150.0)
 
     if score <= 50:
         level = "Safe"

@@ -36,13 +36,13 @@ export default function RiskExplanation({ aqiData, riskData, profile }) {
 
     return (
         <div className="glass-card p-6">
-            <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2">
+            <h3 className="text-sm font-bold text-ink-dark mb-4 flex items-center gap-2">
                 <span>🤖</span> AI Risk Explanation
             </h3>
             <ul className="space-y-3">
                 {reasons.map((reason, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-sm text-gray-300">
-                        <span className="text-primary-400 mt-0.5">↳</span>
+                    <li key={idx} className="flex items-start gap-3 text-sm text-ink-muted">
+                        <span className="text-brand-orange mt-0.5">↳</span>
                         <span className="leading-relaxed">{reason}</span>
                     </li>
                 ))}

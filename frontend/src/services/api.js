@@ -28,8 +28,16 @@ export const getAnalytics = () =>
 export const sendChatMessage = (payload) =>
     API.post('/chat', payload).then((r) => r.data);
 
-/** POST /predict-pm25 */
-export const predictPM25 = (weatherData) =>
-    API.post('/predict-pm25', weatherData).then((r) => r.data);
+/** POST /predict-air-quality */
+export const predictAirQuality = (weatherData) =>
+    API.post('/predict-air-quality', weatherData).then((r) => r.data);
+
+/** POST /predict-lung-risk */
+export const predictLungRisk = (data) =>
+    API.post('/predict-lung-risk', data).then((r) => r.data);
+
+/** POST /generate-weekly-report */
+export const generateWeeklyReport = (data) =>
+    API.post('/generate-weekly-report', data).then((r) => r.data);
 
 export default API;

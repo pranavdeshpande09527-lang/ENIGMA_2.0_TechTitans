@@ -135,8 +135,8 @@ export default function Analytics() {
     return (
         <div className="space-y-6 animate-slide-up">
             <div>
-                <h1 className="text-2xl font-bold text-white">Public Health Analytics</h1>
-                <p className="text-sm text-gray-500 mt-1">Aggregated environmental health data across cities</p>
+                <h1 className="text-2xl font-bold text-ink-dark">Public Health Analytics</h1>
+                <p className="text-sm text-ink-muted mt-1">Aggregated environmental health data across cities</p>
             </div>
 
             {/* KPIs */}
@@ -144,8 +144,8 @@ export default function Analytics() {
                 {kpis.map((kpi, i) => (
                     <div key={i} className="glass-card-hover p-5 text-center">
                         <span className="text-2xl">{kpi.icon}</span>
-                        <p className="text-2xl font-bold text-white mt-2">{kpi.value}</p>
-                        <p className="text-[11px] text-gray-500 uppercase tracking-wider mt-1">{kpi.label}</p>
+                        <p className="text-2xl font-bold text-ink-dark mt-2">{kpi.value}</p>
+                        <p className="text-[11px] text-ink-muted uppercase tracking-wider mt-1">{kpi.label}</p>
                     </div>
                 ))}
             </div>
@@ -153,13 +153,13 @@ export default function Analytics() {
             {/* Charts Row */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div className="glass-card p-6">
-                    <h3 className="text-sm font-bold text-white mb-4">Risk Distribution</h3>
+                    <h3 className="text-sm font-bold text-ink-dark mb-4">Risk Distribution</h3>
                     <div style={{ height: '280px' }}>
                         <Doughnut data={doughnutData} options={doughnutOptions} />
                     </div>
                 </div>
                 <div className="glass-card p-6">
-                    <h3 className="text-sm font-bold text-white mb-4">City AQI Comparison</h3>
+                    <h3 className="text-sm font-bold text-ink-dark mb-4">City AQI Comparison</h3>
                     <div style={{ height: '280px' }}>
                         <Bar data={barData} options={barOptions} />
                     </div>

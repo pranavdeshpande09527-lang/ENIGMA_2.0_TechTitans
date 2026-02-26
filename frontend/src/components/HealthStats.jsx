@@ -10,10 +10,10 @@ function StatCard({ label, value, unit, icon, color }) {
                 {icon}
             </div>
             <div>
-                <p className="text-[11px] text-gray-500 uppercase tracking-wider font-medium">{label}</p>
+                <p className="text-[11px] text-ink-muted uppercase tracking-wider font-medium">{label}</p>
                 <div className="flex items-baseline gap-1 mt-1">
-                    <span className="text-2xl font-bold text-white">{value}</span>
-                    <span className="text-xs text-gray-500">{unit}</span>
+                    <span className="text-2xl font-bold text-ink-dark">{value}</span>
+                    <span className="text-xs text-ink-muted">{unit}</span>
                 </div>
             </div>
         </div>

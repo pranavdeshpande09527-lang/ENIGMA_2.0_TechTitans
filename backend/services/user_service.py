@@ -63,5 +63,5 @@ async def get_user_by_id(user_id: str) -> dict | None:
 
         return user
     except Exception as e:
-        print(f"⚠️  Error fetching user: {e}")
+        print(f"[WARNING]  Error fetching user: {e}")
         return None

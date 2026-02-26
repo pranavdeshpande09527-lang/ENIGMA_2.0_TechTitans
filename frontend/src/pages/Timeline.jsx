@@ -117,22 +117,22 @@ export default function Timeline() {
     return (
         <div className="space-y-6 animate-slide-up">
             <div>
-                <h1 className="text-2xl font-bold text-white">Pollution Exposure Timeline</h1>
-                <p className="text-sm text-gray-500 mt-1">Track your AQI & risk exposure throughout the day</p>
+                <h1 className="text-2xl font-bold text-ink-dark">Pollution Exposure Timeline</h1>
+                <p className="text-sm text-ink-muted mt-1">Track your AQI & risk exposure throughout the day</p>
             </div>
 
             {/* Summary cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="glass-card-hover p-5">
-                    <p className="text-[11px] text-gray-500 uppercase tracking-wider">Average AQI</p>
-                    <p className="text-3xl font-bold text-primary-400 mt-1">{avgAQI}</p>
+                    <p className="text-[11px] text-ink-muted uppercase tracking-wider">Average AQI</p>
+                    <p className="text-3xl font-bold text-brand-orange mt-1">{avgAQI}</p>
                 </div>
                 <div className="glass-card-hover p-5">
-                    <p className="text-[11px] text-gray-500 uppercase tracking-wider">Peak AQI</p>
+                    <p className="text-[11px] text-ink-muted uppercase tracking-wider">Peak AQI</p>
                     <p className="text-3xl font-bold text-danger-400 mt-1">{peakAQI}</p>
                 </div>
                 <div className="glass-card-hover p-5">
-                    <p className="text-[11px] text-gray-500 uppercase tracking-wider">Peak Hour</p>
+                    <p className="text-[11px] text-ink-muted uppercase tracking-wider">Peak Hour</p>
                     <p className="text-3xl font-bold text-warning-400 mt-1">{peakHour}</p>
                 </div>
             </div>

@@ -19,7 +19,7 @@ def add_to_history(session_id: str, message: str):
 
 def generate_explanation_for_judges() -> str:
     return (
-        "🌿 Here is how Breathometer AI works: \n"
+        "[BOT] Here is how Breathometer AI works: \n"
         "1. **Live AQI Monitoring:** We fetch real-time air quality data for the selected city.\n"
         "2. **Wearable Integration:** We simulate SpO2 and Heart Rate data normally collected from smartwatches.\n"
         "3. **Risk Scoring Engine:** Our algorithm calculates a composite risk score by weighting AQI (50%), Heart Rate (30%), and Oxygen (20%).\n"
@@ -42,15 +42,15 @@ def generate_sathi_response(message: str, aqi: int = None, risk_level: str = Non
     response = ""
     # Always prefix first message
     if is_first_message:
-        response += "Hi, I am Sathi 🌿 Your Lung Health Companion. "
+        response += "Hi, I am Sathi [BOT] Your Lung Health Companion. "
 
     # 2. HIGH RISK ALERT MODE
     if (aqi and aqi > 200) or risk_level == "High":
-        response += "⚠️ **High Risk Alert** \n"
+        response += "[WARNING] **High Risk Alert** \n"
         response += "I understand this can be concerning, but your current air quality and health metrics indicate a severe risk. Please follow these steps immediately:\n"
-        response += "- 😷 Wear an N95 or KN95 mask if you must go outside.\n"
-        response += "- 🚪 Keep all windows sealed and turn on indoor air purifiers.\n"
-        response += "- 🛋️ Avoid all physical exertion and rest indoors.\n"
+        response += "- [MASK] Wear an N95 or KN95 mask if you must go outside.\n"
+        response += "- [DOOR] Keep all windows sealed and turn on indoor air purifiers.\n"
+        response += "- [REST] Avoid all physical exertion and rest indoors.\n"
         response += "Please check your Dashboard for more detailed preventive suggestions. "
         return response
 
@@ -58,13 +58,13 @@ def generate_sathi_response(message: str, aqi: int = None, risk_level: str = Non
     sentences = []
     if aqi is not None:
         if aqi <= 50:
-            sentences.append(f"✅ The current AQI is an excellent {aqi}. It's a beautiful day to enjoy the fresh air outdoors!")
+            sentences.append(f"[SUCCESS] The current AQI is an excellent {aqi}. It's a beautiful day to enjoy the fresh air outdoors!")
         elif 51 <= aqi <= 100:
             sentences.append(f"The AQI is {aqi}, which is acceptable. However, if you are unusually sensitive to pollution, you might want to take it slightly easy outdoors.")
         elif 101 <= aqi <= 150:
             sentences.append(f"The AQI is {aqi}. I understand this can be frustrating for sensitive groups. Please exercise caution if you have respiratory issues.")
         elif 151 <= aqi <= 200:
-            sentences.append(f"⚠️ Warning: The AQI has reached {aqi}. It's quite polluted out there. Please limit your time outside and wear a mask if you need to travel.")
+            sentences.append(f"[WARNING] Warning: The AQI has reached {aqi}. It's quite polluted out there. Please limit your time outside and wear a mask if you need to travel.")
             
     # 4. PERSONALIZED HEALTH ADVICE
     if user_profile:
@@ -79,7 +79,7 @@ def generate_sathi_response(message: str, aqi: int = None, risk_level: str = Non
 
     # 5. KEYWORD RESPONSES
     if "mask" in message_lower:
-        sentences.append("😷 When selecting a mask, an N95 or KN95 is strongly recommended. They filter out 95% of harmful PM2.5 particles, unlike standard surgical or cloth masks.")
+        sentences.append("[MASK] When selecting a mask, an N95 or KN95 is strongly recommended. They filter out 95% of harmful PM2.5 particles, unlike standard surgical or cloth masks.")
     elif "exercise" in message_lower or "workout" in message_lower:
         if aqi and aqi > 100:
             sentences.append("Since the AQI is elevated, I advise shifting your workout indoors. Heavy breathing outdoors draws toxic particles deeper into your lungs.")

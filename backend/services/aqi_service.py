@@ -7,7 +7,8 @@ import os
 import random
 from datetime import datetime, timezone
 
-AQI_API_KEY = os.getenv("AQI_API_KEY", "")
+# Provided OpenWeather API Key
+AQI_API_KEY = os.getenv("AQI_API_KEY", "92b720fddf2a5c86fd6eb01f8a23430d")
 
 # ── Mock AQI data ────────────────────────────────────────
 MOCK_AQI_DATA = {
@@ -116,5 +117,5 @@ async def fetch_aqi(city: str) -> dict:
                 "source": "OpenWeatherMap",
             }
     except Exception as e:
-        print(f"⚠️  AQI API error: {e} — using mock data")
+        print(f"[WARNING]  AQI API error: {e} — using mock data")
         return _mock_response(city)

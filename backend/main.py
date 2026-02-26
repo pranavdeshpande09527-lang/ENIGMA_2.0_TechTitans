@@ -25,7 +25,7 @@ async def lifespan(app: FastAPI):
     try:
         await connect_db()
     except Exception as e:
-        print(f"⚠️ MongoDB connection failed — running in mock-data mode: {e}")
+        print(f"[WARNING] MongoDB connection failed — running in mock-data mode: {e}")
     yield
     try:
         await disconnect_db()

@@ -4,7 +4,7 @@
 import React from 'react';
 
 const getAQIColor = (aqi) => {
-    if (aqi <= 50) return { bg: 'from-safe-500/20 to-safe-600/10', text: 'text-safe-400', border: 'border-safe-500/30', glow: 'glow-safe' };
+    if (aqi <= 50) return { bg: 'from-safe-500/20 to-safe-600/10', text: 'text-brand-teal', border: 'border-safe-500/30', glow: 'glow-safe' };
     if (aqi <= 100) return { bg: 'from-warning-500/20 to-warning-600/10', text: 'text-warning-400', border: 'border-warning-500/30', glow: 'glow-warning' };
     return { bg: 'from-danger-500/20 to-danger-600/10', text: 'text-danger-400', border: 'border-danger-500/30', glow: 'glow-danger' };
 };
@@ -26,10 +26,10 @@ export default function AQICard({ data }) {
         <div className={`glass-card-hover p-6 bg-gradient-to-br ${colors.bg} ${colors.border} ${colors.glow}`}>
             <div className="flex items-center justify-between mb-4">
                 <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wider font-medium">Air Quality Index</p>
-                    <p className="text-sm text-gray-400 mt-1">{data?.city || 'Unknown City'}</p>
+                    <p className="text-xs text-ink-muted uppercase tracking-wider font-medium">Air Quality Index</p>
+                    <p className="text-sm text-ink-muted mt-1">{data?.city || 'Unknown City'}</p>
                 </div>
-                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-xl">
+                <div className="w-10 h-10 rounded-xl bg-surface-card shadow-premium flex items-center justify-center text-xl">
                     🌫️
                 </div>
             </div>
@@ -41,8 +41,8 @@ export default function AQICard({ data }) {
 
             {data?.dominant_pollutant && (
                 <div className="mt-4 flex items-center gap-2">
-                    <span className="text-[10px] text-gray-600 uppercase tracking-wider">Dominant Pollutant</span>
-                    <span className="text-xs text-gray-400 bg-white/5 px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] text-ink-muted uppercase tracking-wider">Dominant Pollutant</span>
+                    <span className="text-xs text-ink-muted bg-surface-card shadow-premium px-2 py-0.5 rounded-full">
                         {data.dominant_pollutant}
                     </span>
                 </div>

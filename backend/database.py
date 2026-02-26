@@ -30,7 +30,7 @@ async def connect_db():
     global _client, _db, _using_memory
 
     if not MONGODB_URL:
-        print("ℹ️  No MONGODB_URL set — using in-memory storage.")
+        print("[INFO]  No MONGODB_URL set — using in-memory storage.")
         _using_memory = True
         return
 
@@ -41,9 +41,9 @@ async def connect_db():
         await _client.admin.command("ping")
         _db = _client[DB_NAME]
         _using_memory = False
-        print(f"✅ Connected to MongoDB: {DB_NAME}")
+        print(f"[SUCCESS] Connected to MongoDB: {DB_NAME}")
     except Exception as e:
-        print(f"⚠️  MongoDB connection failed ({e}) — using in-memory storage.")
+        print(f"[WARNING]  MongoDB connection failed ({e}) — using in-memory storage.")
         _client = None
         _db = None
         _using_memory = True

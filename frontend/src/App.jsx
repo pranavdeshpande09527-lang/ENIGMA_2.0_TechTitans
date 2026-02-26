@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Analytics from './pages/Analytics';
 import SathiChat from './components/SathiChat';
 import Timeline from './pages/Timeline';
+import FullScreenLoader from './components/FullScreenLoader';
+import BreathometerLogo from './components/BreathometerLogo';
 
 /* ── Sidebar Navigation ──────────────────────────────────── */
 const navItems = [
@@ -14,18 +16,18 @@ const navItems = [
 
 function Sidebar() {
     return (
-        <aside className="fixed left-0 top-0 h-screen w-64 bg-dark-950/80 backdrop-blur-xl border-r border-white/10 flex flex-col z-50">
+        <aside className="fixed left-0 top-0 h-screen w-64 bg-surface-base backdrop-blur-xl border-r border-brand-terracotta/10 flex flex-col z-50">
             {/* Logo */}
-            <div className="p-6 border-b border-white/10">
+            <div className="p-6 border-b border-brand-terracotta/10">
                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center text-xl shadow-lg shadow-primary-500/25">
-                        🫁
+                    <div className="w-10 h-10 rounded-xl bg-transparent flex items-center justify-center text-xl shadow-lg shadow-primary-500/10">
+                        <BreathometerLogo className="w-10 h-10 drop-shadow-lg" />
                     </div>
                     <div>
-                        <h1 className="text-lg font-bold bg-gradient-to-r from-primary-400 to-primary-200 bg-clip-text text-transparent">
-                            Breathometer
+                        <h1 className="text-lg font-bold text-gray-100 tracking-wider">
+                            BREATHOMETER
                         </h1>
-                        <p className="text-[10px] text-gray-500 tracking-widest uppercase">AI Lung Monitor</p>
+                        <p className="text-[10px] text-ink-muted tracking-widest uppercase mt-1">AI Lung Monitor</p>
                     </div>
                 </div>
             </div>
@@ -39,8 +41,8 @@ function Sidebar() {
                         end={item.to === '/'}
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${isActive
-                                ? 'bg-primary-500/15 text-primary-400 border border-primary-500/30 shadow-lg shadow-primary-500/10'
-                                : 'text-gray-400 hover:text-gray-200 hover:bg-white/5'
+                                ? 'bg-surface-base0/15 text-brand-orange border border-primary-500/30 shadow-lg shadow-primary-500/10'
+                                : 'text-ink-muted hover:text-ink-dark hover:bg-surface-card shadow-premium'
                             }`
                         }
                     >
@@ -51,12 +53,12 @@ function Sidebar() {
             </nav>
 
             {/* Footer */}
-            <div className="p-4 border-t border-white/10">
+            <div className="p-4 border-t border-brand-terracotta/10">
                 <div className="glass-card p-3 rounded-xl">
-                    <p className="text-[11px] text-gray-500">System Status</p>
+                    <p className="text-[11px] text-ink-muted">System Status</p>
                     <div className="flex items-center gap-2 mt-1">
                         <span className="w-2 h-2 bg-safe-500 rounded-full animate-pulse-glow"></span>
-                        <span className="text-xs text-safe-400">All systems operational</span>
+                        <span className="text-xs text-brand-teal">All systems operational</span>
                     </div>
                 </div>
             </div>
@@ -66,8 +68,19 @@ function Sidebar() {
 
 /* ── Main App ────────────────────────────────────────────── */
 export default function App() {
+    const [appIsLoading, setAppIsLoading] = useState(true);
+
+    useEffect(() => {
+        // Let the beautiful SVG drawing and text fade animation play for 3.5s on boot
+        const startupTimer = setTimeout(() => {
+            setAppIsLoading(false);
+        }, 3500);
+        return () => clearTimeout(startupTimer);
+    }, []);
+
     return (
         <div className="flex min-h-screen">
+            <FullScreenLoader isLoading={appIsLoading} />
             <Sidebar />
             <main className="flex-1 ml-64 p-8">
                 <Routes>

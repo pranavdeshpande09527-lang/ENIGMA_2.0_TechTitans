@@ -19,6 +19,7 @@ async def compute_risk(payload: RiskRequest):
         aqi=payload.aqi,
         heart_rate=payload.heart_rate,
         spo2=payload.spo2,
+        profile=payload.profile,
     )
 
     # ── Persist to risk_history ──────────────────────────
@@ -37,6 +38,6 @@ async def compute_risk(payload: RiskRequest):
         try:
             await collection.insert_one(history_doc)
         except Exception as e:
-            print(f"⚠️ Could not save risk history: {e}")
+            print(f"[WARNING] Could not save risk history: {e}")
 
     return result
