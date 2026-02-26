@@ -95,6 +95,12 @@ export default function Dashboard() {
         fetchData();
     }, [city, wearable, profile]);
 
+    // Save latest data to localStorage for SathiChat context
+    useEffect(() => {
+        if (aqiData) localStorage.setItem('breathometer_aqi', JSON.stringify(aqiData));
+        if (riskData) localStorage.setItem('breathometer_risk', JSON.stringify(riskData));
+    }, [aqiData, riskData]);
+
     const riskTrend = prevRisk && riskData
         ? (riskData.risk_score > prevRisk ? 'up' : riskData.risk_score < prevRisk ? 'down' : 'flat')
         : 'flat';

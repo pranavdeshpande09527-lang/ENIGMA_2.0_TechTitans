@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
-import Timeline from './pages/Timeline';
 import Analytics from './pages/Analytics';
+import SathiChat from './components/SathiChat';
 
 /* ── Sidebar Navigation ──────────────────────────────────── */
 const navItems = [
@@ -75,6 +75,7 @@ export default function App() {
                     <Route path="/analytics" element={<Analytics />} />
                 </Routes>
             </main>
+            <SathiChat />
         </div>
     );
 }

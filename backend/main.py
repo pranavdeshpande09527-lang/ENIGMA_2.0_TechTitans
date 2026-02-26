@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from database import connect_db, disconnect_db
-from routes import aqi, risk, users, analytics
+from routes import aqi, risk, users, analytics, chat
 import os
 
 DEMO_MODE = os.getenv("DEMO_MODE", "true").lower() == "true"
@@ -55,6 +55,7 @@ app.include_router(aqi.router)
 app.include_router(risk.router)
 app.include_router(users.router)
 app.include_router(analytics.router)
+app.include_router(chat.router)
 
 
 @app.get("/", tags=["Health"])

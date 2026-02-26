@@ -24,4 +24,8 @@ export const getUser = (userId) =>
 export const getAnalytics = () =>
     API.get('/public-analytics').then((r) => r.data);
 
+/** POST /chat */
+export const sendChatMessage = (payload) =>
+    API.post('/chat', payload).then((r) => r.data);
+
 export default API;
