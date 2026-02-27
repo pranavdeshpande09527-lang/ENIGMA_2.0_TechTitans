@@ -5,6 +5,8 @@ import React, { useState, useEffect } from 'react';
 
 export default function HealthProfile({ onProfileUpdate }) {
     const [profile, setProfile] = useState({
+        name: '',
+        gender: '',
         age: 30,
         smoker: false,
         asthma: false,
@@ -18,8 +20,8 @@ export default function HealthProfile({ onProfileUpdate }) {
         if (saved) {
             try {
                 const parsed = JSON.parse(saved);
-                setProfile(parsed);
-                onProfileUpdate(parsed);
+                setProfile(prev => ({ ...prev, ...parsed }));
+                onProfileUpdate({ ...profile, ...parsed });
             } catch (e) { }
         } else {
             onProfileUpdate(profile);
@@ -30,7 +32,7 @@ export default function HealthProfile({ onProfileUpdate }) {
         const { name, value, type, checked } = e.target;
         setProfile(prev => ({
             ...prev,
-            [name]: type === 'checkbox' ? checked : Number(value)
+            [name]: type === 'checkbox' ? checked : (type === 'number' ? Number(value) : value)
         }));
     };
 
@@ -78,7 +80,21 @@ export default function HealthProfile({ onProfileUpdate }) {
 
             {isEditing && (
                 <div className="p-6 space-y-4 animate-slide-up bg-surface-base">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <label className="text-sm text-ink-muted flex flex-col gap-1.5">
+                            Name
+                            <input type="text" name="name" value={profile.name || ''} onChange={handleChange} placeholder="e.g. Alex" className="bg-black shadow-premium border border-brand-terracotta/10 rounded-lg p-2 text-white text-sm placeholder-gray-400" />
+                        </label>
+                        <label className="text-sm text-ink-muted flex flex-col gap-1.5">
+                            Gender
+                            <select name="gender" value={profile.gender || ''} onChange={handleChange} className="bg-black shadow-premium border border-brand-terracotta/10 rounded-lg p-2 text-white text-sm">
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                                <option value="Prefer not to say">Prefer not to say</option>
+                            </select>
+                        </label>
                         <label className="text-sm text-ink-muted flex flex-col gap-1.5">
                             Age
                             <input type="number" name="age" value={profile.age} onChange={handleChange} className="bg-black shadow-premium border border-brand-terracotta/10 rounded-lg p-2 text-white text-sm placeholder-gray-400" />

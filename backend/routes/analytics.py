@@ -37,6 +37,17 @@ MOCK_ANALYTICS = {
         {"hour": "22:00", "aqi": 150},
     ],
     "health_alerts_today": 38,
+    "top_symptoms": [
+        {"symptom": "Dry Cough", "percentage": 42},
+        {"symptom": "Wheezing", "percentage": 28},
+        {"symptom": "Shortness of Breath", "percentage": 18},
+        {"symptom": "Eye Irritation", "percentage": 12},
+    ],
+    "demographics_affected": {
+        "children_under_12": 15,
+        "adults": 35,
+        "seniors_over_60": 50,
+    }
 }
 
 

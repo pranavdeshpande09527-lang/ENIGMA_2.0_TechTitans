@@ -117,7 +117,9 @@ export default function Dashboard() {
         <div className="space-y-6 animate-slide-up">
             {/* Header */}
             <div>
-                <h1 className="text-2xl font-bold text-ink-dark">Lung Health Dashboard</h1>
+                <h1 className="text-2xl font-bold text-ink-dark">
+                    {profile?.name ? `Hello ${profile.name} 👋` : 'Settings'}
+                </h1>
                 <p className="text-sm text-ink-muted mt-1">Real-time monitoring for {city}</p>
             </div>
 
