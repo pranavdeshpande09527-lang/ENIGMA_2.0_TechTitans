@@ -53,7 +53,7 @@ export default function SathiChat() {
             {/* Floating Button */}
             <button
                 onClick={() => setIsOpen(true)}
-                className={`fixed bottom-6 right-6 w-14 h-14 bg-primary-600 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(26,175,100,0.4)] hover:bg-surface-base0 hover:scale-110 transition-all z-50 ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}
+                className={`fixed bottom-6 right-6 w-14 h-14 bg-primary-600 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(26,175,100,0.4)] hover:bg-black hover:scale-110 transition-all z-50 ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}
                 aria-label="Open Chat Sathi"
             >
                 <span className="text-2xl">🌿</span>
@@ -114,12 +114,12 @@ export default function SathiChat() {
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             placeholder="Ask Sathi about your lung health..."
-                            className="w-full bg-surface-card shadow-premium border border-brand-terracotta/10 text-ink-dark text-sm rounded-full pl-4 pr-12 py-3 focus:outline-none focus:border-primary-500/50 transition-colors"
+                            className="w-full bg-black shadow-premium border border-brand-terracotta/10 text-white text-sm rounded-full pl-4 pr-12 py-3 focus:outline-none focus:border-primary-500/50 transition-colors placeholder-gray-400"
                         />
                         <button
                             type="submit"
                             disabled={!input.trim() || isLoading}
-                            className="absolute right-2 p-1.5 text-brand-orange hover:text-primary-300 disabled:opacity-50 disabled:hover:text-brand-orange transition-colors bg-surface-base0/10 rounded-full"
+                            className="absolute right-2 p-1.5 text-brand-orange hover:text-primary-300 disabled:opacity-50 disabled:hover:text-brand-orange transition-colors bg-black/10 rounded-full"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                                 <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />

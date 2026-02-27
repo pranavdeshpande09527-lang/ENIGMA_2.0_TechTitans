@@ -19,8 +19,8 @@ class ChatResponse(BaseModel):
 
 @router.post("/chat", response_model=ChatResponse)
 async def chat_with_sathi(payload: ChatRequest):
-    """Secure rule-based offline chatbot endpoint."""
-    reply_text = generate_sathi_response(
+    """Secure API-based chatbot endpoint."""
+    reply_text = await generate_sathi_response(
         message=payload.message,
         aqi=payload.aqi,
         risk_level=payload.risk_level,

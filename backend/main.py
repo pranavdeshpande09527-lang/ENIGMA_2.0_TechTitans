@@ -58,7 +58,6 @@ app.include_router(analytics.router)
 app.include_router(chat.router)
 app.include_router(predict.router)
 
-
 @app.get("/", tags=["Health"])
 async def root():
     return {

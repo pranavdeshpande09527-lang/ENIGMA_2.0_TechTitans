@@ -155,7 +155,7 @@ export default function MLPredictionCard({ onPredict, onWeatherFetched }) {
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     placeholder="Enter city to auto-fill weather..."
-                    className="flex-1 px-3 py-2 rounded-lg bg-surface-card shadow-premium border border-brand-terracotta/10 text-ink-dark text-sm outline-none focus:border-purple-500/50 transition-colors"
+                    className="flex-1 px-3 py-2 rounded-lg bg-black shadow-premium border border-brand-terracotta/10 text-white text-sm outline-none focus:border-purple-500/50 transition-colors placeholder-gray-400"
                 />
                 <button
                     onClick={handleFetchWeather}
@@ -178,7 +178,7 @@ export default function MLPredictionCard({ onPredict, onWeatherFetched }) {
                             value={form[f.key]}
                             onChange={(e) => handleChange(f.key, e.target.value)}
                             placeholder={f.placeholder}
-                            className="w-full px-3 py-2 rounded-lg bg-surface-card shadow-premium border border-brand-terracotta/10 text-ink-dark text-sm outline-none focus:border-purple-500/50 transition-colors"
+                            className="w-full px-3 py-2 rounded-lg bg-black shadow-premium border border-brand-terracotta/10 text-white text-sm outline-none focus:border-purple-500/50 transition-colors placeholder-gray-400"
                         />
                     </div>
                 ))}

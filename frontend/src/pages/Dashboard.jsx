@@ -12,6 +12,7 @@ import RiskExplanation from '../components/RiskExplanation';
 import MLPredictionCard from '../components/MLPredictionCard';
 import LungRiskCard from '../components/LungRiskCard';
 import WeeklyReportCard from '../components/WeeklyReportCard';
+import BreathingGame from '../components/BreathingGame';
 import { getAQI, calculateRisk } from '../services/api';
 
 /* ── Mock wearable data (used when backend is unavailable) ── */
@@ -123,6 +124,26 @@ export default function Dashboard() {
             {/* Health Profile */}
             <HealthProfile onProfileUpdate={setProfile} />
 
+            {/* Top Row: AQI + Risk Gauge */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 relative">
+                <AQICard data={aqiData} />
+                <div className="relative">
+                    <RiskGauge score={riskData?.risk_score} level={riskData?.risk_level} />
+                    {/* Risk Trend Indicator */}
+                    {riskTrend !== 'flat' && (
+                        <div className={`absolute top-6 right-6 flex items-center gap-1 font-bold text-lg px-3 py-1 rounded-full ${riskTrend === 'up' ? 'text-danger-400 bg-danger-500/20 shadow-[0_0_15px_rgba(255,61,61,0.3)]' : 'text-brand-teal bg-brand-teal/20 shadow-[0_0_15px_rgba(26,175,100,0.3)]'}`}>
+                            {riskTrend === 'up' ? '↑' : '↓'}
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            {/* Health Stats */}
+            <HealthStats heartRate={wearable.heart_rate} spo2={wearable.spo2} />
+
+            {/* Lung Capacity Tester Game */}
+            <BreathingGame />
+
             {/* ML Prediction Card */}
             <MLPredictionCard onPredict={handlePredictions} onWeatherFetched={handleWeatherFetched} />
 
@@ -143,23 +164,6 @@ export default function Dashboard() {
                 predictedPm10={predictedPm10}
                 fetchedWeather={fetchedWeather}
             />
-
-            {/* Top Row: AQI + Risk Gauge */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 relative">
-                <AQICard data={aqiData} />
-                <div className="relative">
-                    <RiskGauge score={riskData?.risk_score} level={riskData?.risk_level} />
-                    {/* Risk Trend Indicator */}
-                    {riskTrend !== 'flat' && (
-                        <div className={`absolute top-6 right-6 flex items-center gap-1 font-bold text-lg px-3 py-1 rounded-full ${riskTrend === 'up' ? 'text-danger-400 bg-danger-500/20 shadow-[0_0_15px_rgba(255,61,61,0.3)]' : 'text-brand-teal bg-brand-teal/20 shadow-[0_0_15px_rgba(26,175,100,0.3)]'}`}>
-                            {riskTrend === 'up' ? '↑' : '↓'}
-                        </div>
-                    )}
-                </div>
-            </div>
-
-            {/* Health Stats */}
-            <HealthStats heartRate={wearable.heart_rate} spo2={wearable.spo2} />
 
             {/* Alert Panel */}
             <AlertPanel riskData={riskData} />

@@ -81,11 +81,11 @@ export default function HealthProfile({ onProfileUpdate }) {
                     <div className="grid grid-cols-2 gap-4">
                         <label className="text-sm text-ink-muted flex flex-col gap-1.5">
                             Age
-                            <input type="number" name="age" value={profile.age} onChange={handleChange} className="bg-surface-card shadow-premium border border-brand-terracotta/10 rounded-lg p-2 text-ink-dark text-sm" />
+                            <input type="number" name="age" value={profile.age} onChange={handleChange} className="bg-black shadow-premium border border-brand-terracotta/10 rounded-lg p-2 text-white text-sm placeholder-gray-400" />
                         </label>
                         <label className="text-sm text-ink-muted flex flex-col gap-1.5">
                             Outdoor Hours / Day
-                            <input type="number" name="outdoorHours" value={profile.outdoorHours} onChange={handleChange} className="bg-surface-card shadow-premium border border-brand-terracotta/10 rounded-lg p-2 text-ink-dark text-sm" />
+                            <input type="number" name="outdoorHours" value={profile.outdoorHours} onChange={handleChange} className="bg-black shadow-premium border border-brand-terracotta/10 rounded-lg p-2 text-white text-sm placeholder-gray-400" />
                         </label>
                     </div>
 
@@ -105,7 +105,7 @@ export default function HealthProfile({ onProfileUpdate }) {
                     </div>
 
                     <div className="pt-2">
-                        <button onClick={handleSave} className="w-full bg-primary-600 hover:bg-surface-base0 text-ink-dark font-medium py-2 rounded-lg transition-colors">
+                        <button onClick={handleSave} className="w-full bg-primary-600 hover:bg-black text-ink-dark font-medium py-2 rounded-lg transition-colors">
                             Save Profile
                         </button>
                     </div>

@@ -139,7 +139,81 @@ export default function Timeline() {
 
             {/* Chart */}
             <div className="glass-card p-6" style={{ height: '400px' }}>
+                <h3 className="text-sm font-bold text-ink-dark mb-4">Hourly AQI & Risk Trend</h3>
                 <Line data={chartData} options={chartOptions} />
+            </div>
+
+            {/* Detailed Insights & Breakdown Row */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                {/* Activity Recommendations based on Timeline */}
+                <div className="glass-card p-6 lg:col-span-1 flex flex-col justify-between">
+                    <div>
+                        <h3 className="text-sm font-bold text-ink-dark mb-4 border-b border-brand-sand pb-2">Activity Recommendations</h3>
+                        <p className="text-xs text-ink-muted mb-4">Based on today's exposure trend, here is how you should plan your day.</p>
+
+                        <div className="space-y-4">
+                            <div className="flex items-start gap-3">
+                                <span className="text-xl">🏃‍♂️</span>
+                                <div>
+                                    <p className="text-sm font-semibold text-ink-dark">Best Time to Exercise</p>
+                                    <p className="text-xs text-brand-teal mt-0.5">06:00 - 08:00 (AQI is lowest)</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-3">
+                                <span className="text-xl">🏠</span>
+                                <div>
+                                    <p className="text-sm font-semibold text-ink-dark">Stay Indoors</p>
+                                    <p className="text-xs text-danger-400 mt-0.5">18:00 - 20:00 (Peak pollution)</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-3">
+                                <span className="text-xl">😷</span>
+                                <div>
+                                    <p className="text-sm font-semibold text-ink-dark">Mask Recommended</p>
+                                    <p className="text-xs text-warning-400 mt-0.5">All day (Avg AQI &gt; 100)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Hourly Breakdown Table */}
+                <div className="glass-card p-6 lg:col-span-2 overflow-x-auto">
+                    <h3 className="text-sm font-bold text-ink-dark mb-4 border-b border-brand-sand pb-2">Hourly Breakdown</h3>
+                    <table className="w-full text-left border-collapse">
+                        <thead>
+                            <tr className="text-[11px] uppercase tracking-wider text-ink-muted border-b border-brand-sand/50">
+                                <th className="pb-2 font-medium">Time</th>
+                                <th className="pb-2 font-medium">AQI Level</th>
+                                <th className="pb-2 font-medium">Risk Score</th>
+                                <th className="pb-2 font-medium text-right">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody className="text-sm">
+                            {timeline.labels.map((time, idx) => {
+                                const a = timeline.aqi[idx];
+                                const r = timeline.riskScores[idx];
+                                const statusColor = a <= 100 ? 'text-brand-teal bg-safe-400/10' : a <= 150 ? 'text-warning-400 bg-warning-400/10' : 'text-danger-400 bg-danger-400/10';
+                                const statusText = a <= 100 ? 'Moderate' : a <= 150 ? 'Unhealthy for Sensitive' : 'Unhealthy';
+
+                                return (
+                                    <tr key={time} className="border-b border-brand-sand/30 hover:bg-surface-base0/50 transition-colors">
+                                        <td className="py-2.5 text-ink-dark font-medium">{time}</td>
+                                        <td className={`py-2.5 font-bold ${a > 150 ? 'text-danger-400' : 'text-ink-dark'}`}>{a}</td>
+                                        <td className="py-2.5 text-ink-muted">{r}/100</td>
+                                        <td className="py-2.5 text-right">
+                                            <span className={`px-2 py-1 text-[10px] uppercase tracking-wider font-bold rounded-full ${statusColor}`}>
+                                                {statusText}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     );

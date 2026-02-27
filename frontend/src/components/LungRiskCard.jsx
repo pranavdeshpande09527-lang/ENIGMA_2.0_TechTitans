@@ -122,25 +122,25 @@ export default function LungRiskCard({ aqiData, profile, predictedPm25, predicte
                             <span>Current AQI</span>
                             <span className="text-brand-orange text-[10px]">(Auto-fetched)</span>
                         </label>
-                        <input type="number" name="aqi" value={envStats.aqi} onChange={handleEnvChange} className="w-full bg-surface-card shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-ink-dark focus:outline-none focus:border-primary-500" />
+                        <input type="number" name="aqi" value={envStats.aqi} onChange={handleEnvChange} className="w-full bg-black shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-white focus:outline-none focus:border-primary-500 placeholder-gray-400" />
                     </div>
 
                     <div>
                         <label className="block text-xs text-ink-muted mb-1">PM2.5 (µg/m³)</label>
-                        <input type="number" name="pm25" value={envStats.pm25} onChange={handleEnvChange} className="w-full bg-surface-card shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-ink-dark focus:outline-none focus:border-primary-500" />
+                        <input type="number" name="pm25" value={envStats.pm25} onChange={handleEnvChange} className="w-full bg-black shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-white focus:outline-none focus:border-primary-500 placeholder-gray-400" />
                     </div>
                     <div>
                         <label className="block text-xs text-ink-muted mb-1">PM10 (µg/m³)</label>
-                        <input type="number" name="pm10" value={envStats.pm10} onChange={handleEnvChange} className="w-full bg-surface-card shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-ink-dark focus:outline-none focus:border-primary-500" />
+                        <input type="number" name="pm10" value={envStats.pm10} onChange={handleEnvChange} className="w-full bg-black shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-white focus:outline-none focus:border-primary-500 placeholder-gray-400" />
                     </div>
                     <div className="grid grid-cols-2 gap-2">
                         <div>
                             <label className="block text-xs text-ink-muted mb-1">Temp (°C)</label>
-                            <input type="number" name="temperature" value={envStats.temperature} onChange={handleEnvChange} className="w-full bg-surface-card shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-ink-dark focus:outline-none focus:border-primary-500" />
+                            <input type="number" name="temperature" value={envStats.temperature} onChange={handleEnvChange} className="w-full bg-black shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-white focus:outline-none focus:border-primary-500 placeholder-gray-400" />
                         </div>
                         <div>
                             <label className="block text-xs text-ink-muted mb-1">Hum. (%)</label>
-                            <input type="number" name="humidity" value={envStats.humidity} onChange={handleEnvChange} className="w-full bg-surface-card shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-ink-dark focus:outline-none focus:border-primary-500" />
+                            <input type="number" name="humidity" value={envStats.humidity} onChange={handleEnvChange} className="w-full bg-black shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-white focus:outline-none focus:border-primary-500 placeholder-gray-400" />
                         </div>
                     </div>
                 </div>
@@ -151,7 +151,7 @@ export default function LungRiskCard({ aqiData, profile, predictedPm25, predicte
 
                     <div>
                         <label className="block text-xs text-ink-muted mb-1">Age</label>
-                        <input type="number" name="age" value={healthStats.age} onChange={handleHealthChange} className="w-full bg-surface-card shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-ink-dark focus:outline-none focus:border-primary-500" />
+                        <input type="number" name="age" value={healthStats.age} onChange={handleHealthChange} className="w-full bg-black shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-white focus:outline-none focus:border-primary-500 placeholder-gray-400" />
                     </div>
 
                     <div className="space-y-2 mt-4">
@@ -162,7 +162,7 @@ export default function LungRiskCard({ aqiData, profile, predictedPm25, predicte
                         {healthStats.smoking && (
                             <div className="pl-6 mt-1 mb-2">
                                 <label className="block text-xs text-ink-muted mb-1">Cigarettes per day</label>
-                                <input type="number" name="cigarettesPerDay" value={healthStats.cigarettesPerDay} onChange={handleHealthChange} className="w-full bg-surface-card shadow-premium border border-brand-sand rounded-lg px-3 py-1.5 text-ink-dark focus:outline-none focus:border-primary-500 text-sm" />
+                                <input type="number" name="cigarettesPerDay" value={healthStats.cigarettesPerDay} onChange={handleHealthChange} className="w-full bg-black shadow-premium border border-brand-sand rounded-lg px-3 py-1.5 text-white focus:outline-none focus:border-primary-500 text-sm placeholder-gray-400" />
                             </div>
                         )}
                         <label className="flex items-center gap-2 text-sm text-ink-muted">
@@ -214,11 +214,11 @@ export default function LungRiskCard({ aqiData, profile, predictedPm25, predicte
                     <div className="grid grid-cols-2 gap-2 pt-2 border-t border-brand-sand mt-2">
                         <div>
                             <label className="block text-xs text-ink-muted mb-1">Duration (Days)</label>
-                            <input type="number" min="0" name="symptomsDurationDays" value={symptoms.symptomsDurationDays} onChange={handleSymptomChange} className="w-full bg-surface-card shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-ink-dark focus:outline-none focus:border-primary-500 text-sm" />
+                            <input type="number" min="0" name="symptomsDurationDays" value={symptoms.symptomsDurationDays} onChange={handleSymptomChange} className="w-full bg-black shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-white focus:outline-none focus:border-primary-500 text-sm placeholder-gray-400" />
                         </div>
                         <div>
                             <label className="block text-xs text-ink-muted mb-1">SpO₂ (%)</label>
-                            <input type="number" min="0" max="100" name="spo2" value={symptoms.spo2} onChange={handleSymptomChange} className="w-full bg-surface-card shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-ink-dark focus:outline-none focus:border-primary-500 text-sm" />
+                            <input type="number" min="0" max="100" name="spo2" value={symptoms.spo2} onChange={handleSymptomChange} className="w-full bg-black shadow-premium border border-brand-sand rounded-lg px-3 py-2 text-white focus:outline-none focus:border-primary-500 text-sm placeholder-gray-400" />
                         </div>
                     </div>
 

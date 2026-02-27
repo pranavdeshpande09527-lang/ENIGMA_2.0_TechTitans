@@ -33,6 +33,17 @@ const MOCK_ANALYTICS = {
         { city: 'Chennai', aqi: 87, dominant_pollutant: 'NO2' },
     ],
     health_alerts_today: 38,
+    top_symptoms: [
+        { symptom: 'Dry Cough', percentage: 42 },
+        { symptom: 'Wheezing', percentage: 28 },
+        { symptom: 'Shortness of Breath', percentage: 18 },
+        { symptom: 'Eye Irritation', percentage: 12 }
+    ],
+    demographics_affected: {
+        children_under_12: 15,
+        adults: 35,
+        seniors_over_60: 50
+    }
 };
 
 export default function Analytics() {
@@ -164,6 +175,58 @@ export default function Analytics() {
                         <Bar data={barData} options={barOptions} />
                     </div>
                 </div>
+            </div>
+
+            {/* Detailed Health Symptoms & Demographics Row */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                {/* Top Reported Symptoms */}
+                <div className="glass-card p-6">
+                    <h3 className="text-sm font-bold text-ink-dark mb-4 border-b border-brand-sand pb-2">Top Reported Symptoms Today</h3>
+                    <div className="space-y-4 max-h-[250px] overflow-y-auto pr-2">
+                        {(data?.top_symptoms || []).map((symptomData, idx) => (
+                            <div key={idx}>
+                                <div className="flex justify-between items-center mb-1">
+                                    <span className="text-sm font-semibold text-ink-dark">{symptomData.symptom}</span>
+                                    <span className="text-xs text-ink-muted">{symptomData.percentage}%</span>
+                                </div>
+                                <div className="w-full bg-surface-base0 rounded-full h-2 overflow-hidden border border-brand-sand/30">
+                                    <div
+                                        className="h-2 rounded-full bg-brand-orange transition-all duration-1000"
+                                        style={{ width: `${symptomData.percentage}%` }}
+                                    ></div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Highly Vulnerable Demographics Analysis */}
+                <div className="glass-card p-6 flex flex-col justify-between">
+                    <div>
+                        <h3 className="text-sm font-bold text-ink-dark mb-4 border-b border-brand-sand pb-2">Vulnerability Demographics</h3>
+                        <p className="text-xs text-ink-muted mb-6">Of the users reporting respiratory distress today, this is the breakdown of age groups highly affected by the current AQI anomalies.</p>
+
+                        <div className="grid grid-cols-3 gap-4 text-center">
+                            <div className="p-4 bg-surface-base0 rounded-xl border border-brand-sand/50">
+                                <span className="text-3xl mb-2 block">👶</span>
+                                <p className="text-2xl font-bold text-brand-teal mt-1">{data?.demographics_affected?.children_under_12}%</p>
+                                <p className="text-[10px] text-ink-muted uppercase tracking-wider mt-1">Children &lt;12</p>
+                            </div>
+                            <div className="p-4 bg-surface-base0 rounded-xl border border-brand-sand/50">
+                                <span className="text-3xl mb-2 block">🧑</span>
+                                <p className="text-2xl font-bold text-warning-400 mt-1">{data?.demographics_affected?.adults}%</p>
+                                <p className="text-[10px] text-ink-muted uppercase tracking-wider mt-1">Adults (12-60)</p>
+                            </div>
+                            <div className="p-4 bg-surface-base0 rounded-xl border border-brand-sand/50">
+                                <span className="text-3xl mb-2 block">🧓</span>
+                                <p className="text-2xl font-bold text-danger-400 mt-1">{data?.demographics_affected?.seniors_over_60}%</p>
+                                <p className="text-[10px] text-ink-muted uppercase tracking-wider mt-1">Seniors 60+</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             {/* City Table */}
